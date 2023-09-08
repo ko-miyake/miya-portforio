@@ -1,47 +1,39 @@
 <template>
   <div>
-    {{works}}
-    <div class="mainVisual">
-      <picture>
-        <source
-          srcset="https://placehold.jp/375x530.png"
-          media="(max-width: 767px)"
-        />
-        <img src="https://placehold.jp/1440x436.png" alt="" />
-      </picture>
-    </div>
-
     <section id="about" class="sectionPrimary">
-      <div class="container">
-        <h2 class="headingPrimary">about</h2>
+      <div class="l-container">
         <div class="profile">
           <div class="profile__upper">
-            <div class="profile__text">
-              <p class="profile__name">
-                山田 太郎<span lang="en">Taro Yamada</span>
-              </p>
-              <dl class="profile__item">
-                <dt class="profile__title">技術スタック</dt>
-                <dd>HTML / CSS / jQuery / JavaScript / Nuxt</dd>
-              </dl>
-              <dl class="profile__item">
-                <dt class="profile__title">趣味</dt>
-                <dd>開発、ゲーム、YouTube、ライブ、音楽フェス、ピアノ、卓球</dd>
-              </dl>
-            </div>
             <figure class="profile__image">
               <img src="https://placehold.jp/260x260.png" alt="your name" />
             </figure>
+            <div class="profile__text">
+              <p class="profile__name">
+                三宅倖介<span lang="en">Kosuke Miyake</span>
+              </p>
+              <dl class="profile__item">
+                <dt class="profile__title">Skills</dt>
+                <dd>HTML / CSS / JavaScript /JQuery / PHP / Vue </dd>
+              </dl>
+              <dl class="profile__item">
+                <dt class="profile__title">趣味</dt>
+                <dd>ゲーム、運動、アウトドア、バドミントン</dd>
+              </dl>
+            </div>
           </div>
           <p class="profile__message">
-            自己紹介を入れましょう。出身や経歴と現在の仕事の内容を簡単に話すも良し。<br />数年後の目標や今学んでいること、活動している内容を入れるのも良いかと思います。
+            マークアップエンジニア、フロントエンドエンジニアとして4年目間働かせていただいております。<br>
+            普段の業務ではHTML,CSS,JavaScript
+            セマンティックなマークアップや、可読性、運用性が高いコーディング・設計を習得しており、工数削減や技術の提案など、積極的に意見しながらプランニングをすることが得意です。 
+            フロントエンドとして、よりハイエンドな実務経験を積んでいけるようVueやReactといったフレームワーク周りの知識について学習中です。<br>
+            中長期的な目標としてはフロントエンドとバックエンド両面の知識や経験を蓄え、フルスタックな開発に携わりたいと考えています。
           </p>
         </div>
       </div>
     </section>
 
     <section class="sectionPrimary background--gray">
-      <div class="container">
+      <div class="l-container">
         <h2 class="headingPrimary">works</h2>
         <ol class="row works">
           <li class="works__item">
@@ -179,9 +171,6 @@ export default {
     }
   }
 
-  &__message {
-    white-space: pre-wrap;
-  }
 }
 
 .works {
@@ -208,6 +197,9 @@ export default {
 
   &__inner {
     display: block;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+    padding: 16px;
   }
 
   &__image {

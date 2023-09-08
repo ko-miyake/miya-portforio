@@ -1,5 +1,5 @@
 export default {
-  css: ['ress', '~/assets/scss/base.scss', '~/assets/scss/global.scss'],
+  css: ['ress','~/assets/scss/base.scss', '~/assets/scss/global.scss'],
 
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -19,8 +19,6 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],

@@ -41,16 +41,17 @@
       <dl v-if="work.responsibility" class="worksItem">
         <dt class="worksItem__title">担当</dt>
         <dd class="worksItem__contents">
+          {{ work.responsibility.length }}
           <span
             v-for="(res, resIndex) in work.responsibility"
             :key="resIndex"
-            v-text="res"
-          />
+            v-text="res"></span>
         </dd>
       </dl>
       <dl class="worksItem">
         <dt class="worksItem__title">技術</dt>
         <dd class="worksItem__contents">
+          {}
           <span
             v-for="(skill, skillIndex) in work.skill"
             :key="skillIndex"
