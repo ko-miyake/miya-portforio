@@ -43,11 +43,16 @@ export default {
   modules: [
     'nuxt-webfontloader',
     'nuxt-microcms-module', 
-
+    // '@nuxtjs/google-fonts',
   ],
+  // googleFonts: {
+  //   families: {
+  //     'Noto+Sans+JP': true
+  //   }
+  // },
   webfontloader: {
     google: {
-      families: ['Ubuntu:wght@400,700&display=swap'],
+      families: ['Lato:400,700', 'Noto+Sans+JP:400,700'] 
     },
   },
   options: {

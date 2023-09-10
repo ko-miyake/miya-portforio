@@ -53,7 +53,7 @@
   
   .logo {
     color: $text-color-primary;
-    font-family: $font-ubuntu;
+    font-family: $font-notoSans;
     font-size: fz(18);
     font-weight: bold;
     letter-spacing: 0;
@@ -69,7 +69,7 @@
     margin-right: -0.75em;
   
     &__link {
-      font-family: $font-ubuntu;
+      font-family: $font-notoSans;
       font-weight: bold;
       text-transform: capitalize;
       line-height: 64px;

@@ -69,7 +69,7 @@ export default {
     }
   
     &__title {
-      font-family: $font-ubuntu;
+      font-family: $font-notoSans;
       font-size: fz(40);
       margin-bottom: 0.25em;
     }
