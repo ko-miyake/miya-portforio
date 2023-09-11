@@ -1,7 +1,7 @@
 <template>
     <footer class="footer">
       <p class="copyright">
-        <small>©️2021 My Portfolio All Rights Reserved.</small>
+        <small>© 2023 Kosuke Miyake</small>
       </p>
     </footer>
   </template>
@@ -9,7 +9,8 @@
   <style lang="scss" scoped>
   .footer {
     padding: 1em 0;
-    background-color: $base-color-secondary;
+    background-color: #1F2937;
+    color: #fff;
   }
   
   .copyright {
