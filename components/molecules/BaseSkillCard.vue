@@ -33,6 +33,7 @@ export default {
             default : 0
         }
     }
+    
 }
 </script>
 
@@ -56,6 +57,7 @@ export default {
     }
     &__text{
         font-size: 14px;
+        white-space: pre-wrap;
     }
 
     &__icon{

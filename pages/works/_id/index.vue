@@ -28,7 +28,7 @@
       <dl class="worksItem">
         <dt class="worksItem__title">概要</dt>
         <dd class="worksItem__contents">
-          {{ work.overview }}
+          <p>{{ work.overview }}</p>
         </dd>
       </dl>
       <dl class="worksItem">
@@ -179,7 +179,9 @@ export default {
     }
   
     &__contents {
-  
+      p{
+        white-space: pre-wrap;
+      }
       span + span {
         &::before {
           content: '/';
