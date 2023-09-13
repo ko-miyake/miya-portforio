@@ -34,15 +34,14 @@
         <h2 class="headingPrimary">skills</h2>
         <ol class="row skills">
           <li>
-            <dl>
-              <dt><img src="" alt=""></dt>
-              <dd></dd>
-            </dl>
+            <BaseSkillCard icon="a" rate="4" />
           </li>
         </ol>
           <p class="button-area">
             <BaseButton link="/works">詳しく見る</BaseButton>
           </p>
+
+          
       </div>
     </section>
 
@@ -69,12 +68,15 @@
 
 import BaseButton from '../components/atoms/BaseButton.vue';
 import BaseCard from '../components/atoms/BaseCard.vue';
+import BaseSkillCard from '../components/molecules/BaseSkillCard.vue';
+
 
 const { createClient } = require('microcms-js-sdk');
 export default {
   components: {
     BaseButton,
-    BaseCard
+    BaseCard,
+    BaseSkillCard
   },
   async asyncData ({env}) {
     const client = createClient({

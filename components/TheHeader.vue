@@ -77,14 +77,14 @@
       display: inline-block;
       padding: 0 0.25em;
       position: relative;
-      color: #4E42F6;
+      color: gray;
       border-radius: 4px;
       @include mq() {
         padding: 0 0.75em;
       }
   
       &:hover {
-        background: #4E42F6;
+        background: #D385F9;
         color: #fff;
         
       }

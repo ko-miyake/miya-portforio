@@ -26,7 +26,7 @@ export default {
     text-indent: -1em;
     line-height: 56px;
     padding: 0 1em;
-    border: 2px solid #D385F9;
+    border: 2px solid gray;
     border-radius: 4px;
     min-width: 230px;
     position: relative;
