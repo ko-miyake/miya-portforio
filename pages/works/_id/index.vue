@@ -1,22 +1,11 @@
 <template>
   <div class="child">
     <div class="worksMainVisual">
-      <div class="container container--lg worksMainVisual__inner">
+      <div class="l-container container--lg worksMainVisual__inner">
+
         <div class="worksMainVisual__contents">
           <h1 class="worksMainVisual__title">{{ work.title }}</h1>
-          <dl v-if="work.release" class="worksMainVisual__item">
-            <dt class="worksMainVisual__itemName">リリース日</dt>
-            <dd>
-              <time :datetime="work.release">{{ work.release }}</time>
-            </dd>
-          </dl>
-          <dl v-if="work.term" class="worksMainVisual__item">
-            <dt class="worksMainVisual__itemName">制作期間</dt>
-            <dd>{{ work.term }}</dd>
-          </dl>
-          <p v-if="work.overview">{{ work.overview }}</p>
-        </div>
-        <figure class="worksMainVisual__thumbnail">
+          <figure class="worksMainVisual__thumbnail">
           <img
             :width="work.thumbnail.width"
             :height="work.thumbnail.height"
@@ -24,10 +13,30 @@
             :alt="work.title"
           />
         </figure>
+          <dl v-if="work.release" class="worksMainVisual__item">
+            <dt class="worksMainVisual__itemName">リリース日</dt>
+            <dd>
+              <time :datetime="work.release">{{ work.release }}</time>
+            </dd>
+          </dl>
+        </div>
+
       </div>
     </div>
 
-    <div class="container">
+    <div class="l-container l-worksContent">
+      <dl class="worksItem">
+        <dt class="worksItem__title">概要</dt>
+        <dd class="worksItem__contents">
+          {{ work.overview }}
+        </dd>
+      </dl>
+      <dl class="worksItem">
+        <dt class="worksItem__title">時間</dt>
+        <dd class="worksItem__contents">
+          {{ work.term }}時間
+        </dd>
+      </dl>
       <dl class="worksItem">
         <dt class="worksItem__title">URL</dt>
         <dd class="worksItem__contents">
@@ -49,9 +58,8 @@
         </dd>
       </dl>
       <dl class="worksItem">
-        <dt class="worksItem__title">技術</dt>
+        <dt class="worksItem__title">使用技術</dt>
         <dd class="worksItem__contents">
-          {}
           <span
             v-for="(skill, skillIndex) in work.skill"
             :key="skillIndex"
@@ -76,26 +84,25 @@
     </div>
 
     <p class="button-area">
-      <nuxt-link to="/works" class="buttonPrimary buttonPrimary--leftArrow"
-        >back</nuxt-link
-      >
+      <BaseButton link="../">一覧へ戻る</BaseButton>
     </p>
   </div>
 </template>
 
 <script>
-const { createClient } = require('microcms-js-sdk');
+import BaseButton from '../../../components/atoms/BaseButton.vue';
+import { client } from '../../../libs/client';
 
 export default {
+  components : {BaseButton},
   async asyncData ({ params,env }) {
-    const client = createClient({
-      serviceDomain: env.serviceDomain,
-      apiKey: process.env.apiKey
-    })
 
     try {
       const [Res] = await Promise.all([
-        client.get({ endpoint: `works/${params.id}` })
+        client.get(
+          { 
+            endpoint: `works/${params.id}`,
+          })
       ])
 
       return {
@@ -110,39 +117,16 @@ export default {
 </script>
   
   <style lang="scss" scoped>
+  .child{
+    background: #fafafa;
+  }
   .worksMainVisual {
-    padding: 5em 0;
-    background-color: $base-color-secondary;
-    margin-bottom: 2.5em;
-  
-    @include mq() {
-      margin-bottom: 5em;
-    }
-  
-    &__inner {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      flex-direction: column-reverse;
-  
-      @include mq() {
-        flex-direction: row;
-      }
-    }
-  
-    &__contents {
-      @include mq() {
-        width: 39.58%;
-      }
-    }
+    padding: 2em 0;
+    background-color: rgb(243, 244, 246);
   
     &__thumbnail {
       width: 100%;
       margin-bottom: 1.75em;
-  
-      @include mq() {
-        width: 56.25%;
-      }
   
       img {
         width: 100%;
@@ -150,8 +134,15 @@ export default {
     }
   
     &__title {
-      font-size: fz(32);
-      margin-bottom: 0.125em;
+      font-size: fz(20);
+      padding: 0.5rem 1rem;
+      background: #ffffff;
+      border-left: 4px solid #BB42F6;
+      margin-bottom: 1.2em;
+      
+      @include mq(){
+        font-size: (24);
+      }
     }
   
     &__item {
@@ -165,15 +156,29 @@ export default {
     }
   }
   
+  .l-worksContent{
+    background: #fafafa;
+    padding-top: 2em;
+    padding-bottom: 2em;
+
+    @include mq(){
+      padding-top: 3.5em;
+      padding-bottom: 3.5em;
+    }
+  }
   .worksItem {
     &__title {
-      font-size: fz(24);
+      font-size: fz(18);
       font-weight: bold;
-      margin-bottom: 0.333em;
+      margin-bottom: 0.5em;
+      border-bottom: 1px solid #ccc;
+
+      @include mq(){
+        font-size: fz(20);
+      }
     }
   
     &__contents {
-      white-space: pre-wrap;
   
       span + span {
         &::before {

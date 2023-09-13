@@ -19,7 +19,7 @@ export default {
   .button {
     color: $key-color-black;
     display: inline-block;
-    font-size: fz(18);
+    font-size: fz(16);
     font-weight: bold;
     text-transform: capitalize;
     text-align: center;
@@ -30,6 +30,10 @@ export default {
     border-radius: 4px;
     min-width: 230px;
     position: relative;
+
+    @include mq(){
+      font-size: fz(20);
+    }
   
     &:hover {
         opacity: 0.6; 

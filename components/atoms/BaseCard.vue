@@ -32,9 +32,9 @@ export default {
     width: 100%;
     display: block;
     border-radius: 4px;
-    height: 100%;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
-    
+   
+    overflow: hidden;
     &:hover{
       outline: 3px solid #D385F9;
     }
@@ -49,10 +49,13 @@ export default {
     width: 100%;
     max-width: 640px;
     height: auto;
+    aspect-ratio: 4/ 2;
+   
     box-sizing: border-box;
 
     img {
       width: 100%;
+      height: 100%;
     }
   }
 

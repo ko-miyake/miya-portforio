@@ -6,9 +6,9 @@
 export default {
     props:{
         rate: {
-            type : String,
+            type : Number,
             required : true,
-            default : ""
+            default : 0
         }
     },
     data() {
@@ -38,7 +38,7 @@ export default {
     &::after{
         overflow: hidden;
         white-space: nowrap;
-        color: #000;
+        color: red;
     }
     &::before{
         color: #ddd;

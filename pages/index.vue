@@ -2,7 +2,6 @@
   <div>
     <section id="about" class="sectionPrimary">
       <div class="l-container">
-        <h2 class="headingPrimary">about</h2>
         <div class="profile">
           <div class="profile__upper">
             <div class="profile__text">
@@ -18,6 +17,11 @@
                 <dd>ゲーム、運動、アウトドア、バドミントン</dd>
               </dl>
             </div>
+            <div class="profile__imageArea">
+              <div class="profile__image">
+                <img src="/images/profile.svg" alt="">
+              </div>
+            </div>
           </div>
           <p class="profile__message">
             マークアップエンジニア、フロントエンドエンジニアとして4年間働かせていただいております。<br><br>
@@ -29,23 +33,21 @@
       </div>
     </section>
 
-    <section class="sectionPrimary background--gray">
+    <section class="sectionPrimary sectionContents background--gray">
       <div class="l-container">
         <h2 class="headingPrimary">skills</h2>
-        <ol class="row skills">
-          <li>
-            <BaseSkillCard icon="a" rate="4" />
+        <ul class="row skills">
+          <li v-for="skill in skills.contents" :key="skill.id">
+            <BaseSkillCard :icon="skill.logo.url" :rate="skill.rate" >
+              <template #title>{{ skill.skill }}</template>
+              <template #text>{{ skill.detail }}</template>
+            </BaseSkillCard>
           </li>
-        </ol>
-          <p class="button-area">
-            <BaseButton link="/works">詳しく見る</BaseButton>
-          </p>
-
-          
+        </ul>
       </div>
     </section>
 
-    <section class="sectionPrimary background--gray">
+    <section class="sectionPrimary sectionContents background--gray">
       <div class="l-container">
         <h2 class="headingPrimary">works</h2>
         <ol class="row works">
@@ -69,27 +71,23 @@
 import BaseButton from '../components/atoms/BaseButton.vue';
 import BaseCard from '../components/atoms/BaseCard.vue';
 import BaseSkillCard from '../components/molecules/BaseSkillCard.vue';
-
-
-const { createClient } = require('microcms-js-sdk');
+import {client}  from '../libs/client.js'
+ 
 export default {
   components: {
     BaseButton,
     BaseCard,
     BaseSkillCard
   },
-  async asyncData ({env}) {
-    const client = createClient({
-      serviceDomain: env.serviceDomain,
-      apiKey: process.env.apiKey
-    })
-
+  async asyncData () {
     try {
-      const [Res] = await Promise.all([
-        client.get({ endpoint: 'works' })
+      const [works,skills] = await Promise.all([
+        client.get({ endpoint: 'works',queries: {limit: 2}}),
+        client.get({ endpoint: 'skills'})
       ])
       return {
-        works: Res
+        works,
+        skills
       }
     } catch (error) {
       console.error(error)// eslint-disable-line no-console
@@ -101,6 +99,14 @@ export default {
 <style lang="scss" scoped>
 #about{
   background: rgb(243 244 246);
+  padding-top: 0;
+
+  @include mq{
+    padding-top: 3.5em;
+  }
+  & .l-container{
+    padding: 0;
+  }
 }
 .mainVisual {
   img {
@@ -111,10 +117,71 @@ export default {
 .profile {
 
   &__upper{
-    margin-bottom: 0.5em;
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 3em;
+    justify-content: space-between;
+
+    @include mq() {
+      flex-flow: nowrap;
+    }
   }
   &__text {
+    flex: 0 0 auto;
+    order: 2;
+    padding: 0 15px;
     @include mq() {
+      order: 1;
+      padding: 0;
+    }
+  }
+
+  &__imageArea {
+    width: 100%;
+    position: relative;
+    height: 140px;
+    margin-bottom: 6em;
+    order: 1;
+    background: linear-gradient(to right, #BB42F6, #E3B2FB);
+
+    @include mq() {
+      order: 2;
+      flex: 0 0 200px;
+      height: auto;
+      background: none;
+      margin-bottom: 0;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+  &__image{
+    max-width: 140px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 10px 3px #6666;
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    bottom: -50%;
+    transform: translateX(-50%);
+
+    @include mq() {
+      max-width: 200px;
+      transform: inherit;
+      position: relative;
+      bottom: 0%;
+      left: 0;
+
+    }
+
+  }
+
+  &__message{
+    padding: 0 15px;
+    @include mq() {
+      padding: 0;
     }
   }
 
@@ -156,20 +223,20 @@ export default {
     }
   }
 
-  &__image {
-    width: 100%;
-    margin-bottom: 1.75em;
 
-    @include mq() {
-      width: 40%;
-      margin: 0 2em 0 0;
-    }
 
-    img {
-      width: 100%;
-    }
+}
+
+.skills{
+  display: flex;
+  justify-content: normal;
+  gap: 10px;
+  flex-wrap: wrap;
+
+  li{
+    list-style: none;
+    width: calc(100% * 0.5 - 5px);
   }
-
 }
 
 .works {
@@ -185,5 +252,9 @@ export default {
       width: calc((100% - 2.5em) / 2);
     }
   }
+}
+
+.sectionContents + .sectionContents{
+  padding-top: 0;
 }
 </style>

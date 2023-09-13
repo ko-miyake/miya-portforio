@@ -40,10 +40,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 90%;
+    width: 100%;
     margin: 12px auto;
+    padding: 0 15px;
     @include mq() {
-      max-width: 780px;
+      padding: 0;
+      max-width: 800px;
       margin: 12px auto;
     }
   }
