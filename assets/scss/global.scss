@@ -70,3 +70,27 @@
     }
   }
   
+  .skillCards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+      li{
+        list-style: none;
+      }
+  }
+
+  .works {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  
+    &__item {
+      width: 100%;
+  
+      @include mq() {
+        width: calc(50% - 10px);
+      }
+    }
+  }

@@ -5,9 +5,9 @@
         </figure>
         <div class="card__text">
         <p class="card__name"><slot name="title">title</slot></p>
-        <p class="card__date">
-            <time datetime="2021-12-16"><slot name="text">2020-2020</slot></time>
-        </p>
+        <ul class="skillCards">
+          <slot name="skill"></slot>
+        </ul>
         </div>
     </nuxt-link>
 </template>
@@ -30,6 +30,7 @@ export default {
 <style lang="scss" scoped>
 .card{
     width: 100%;
+    height: 100%;
     display: block;
     border-radius: 4px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
@@ -61,6 +62,7 @@ export default {
 
   &__name {
     font-weight: bold;
+    margin-bottom: 0.5em;
   }
 
   &__date {

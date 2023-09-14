@@ -54,7 +54,15 @@
           <li v-for="work in works.contents" :key="work.id" class="works__item">
             <BaseCard :link="`/works/${work.id}/`" :image-link="work.thumbnail.url">
               <template #title>{{work.title}}</template>
-              <template #text>{{ work.release }}</template>
+              <template #skill>
+                <ul class="skillCards">
+                  <li v-for="(skill, skillIndex) in work.skill" :key="skillIndex">
+                    <BaseSkillTag >
+                      {{ skill }}
+                    </BaseSkillTag>
+                  </li>
+              </ul>
+              </template>
             </BaseCard>
           </li>
 
@@ -71,13 +79,15 @@
 import BaseButton from '../components/atoms/BaseButton.vue';
 import BaseCard from '../components/atoms/BaseCard.vue';
 import BaseSkillCard from '../components/molecules/BaseSkillCard.vue';
+import BaseSkillTag from '../components/atoms/BaseSkillTag.vue';
 import {client}  from '../libs/client.js'
  
 export default {
   components: {
     BaseButton,
     BaseCard,
-    BaseSkillCard
+    BaseSkillCard,
+    BaseSkillTag
   },
   async asyncData () {
     try {
@@ -230,29 +240,15 @@ export default {
 .skills{
   display: flex;
   justify-content: normal;
-  gap: 10px;
+  gap: 10px 20px;
   flex-wrap: wrap;
 
   li{
     list-style: none;
-    width: calc(100% * 0.5 - 5px);
+    width: calc(50% - 10px);
   }
 }
 
-.works {
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-
-  &__item {
-    width: 100%;
-
-    @include mq() {
-      width: calc((100% - 2.5em) / 2);
-    }
-  }
-}
 
 .sectionContents + .sectionContents{
   padding-top: 0;

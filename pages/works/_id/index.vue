@@ -26,9 +26,9 @@
 
     <div class="l-container l-worksContent">
       <dl class="worksItem">
-        <dt class="worksItem__title">概要</dt>
+        <dt class="worksItem__title">URL</dt>
         <dd class="worksItem__contents">
-          <p>{{ work.overview }}</p>
+          <a class="url" :href="work.url" target="_blank">{{ work.url }}</a>
         </dd>
       </dl>
       <dl class="worksItem">
@@ -38,9 +38,22 @@
         </dd>
       </dl>
       <dl class="worksItem">
-        <dt class="worksItem__title">URL</dt>
+        <dt class="worksItem__title">使用技術</dt>
         <dd class="worksItem__contents">
-          <a :href="work.url" target="_blank">{{ work.url }}</a>
+          <ul class="skillCards">
+            <li v-for="(skill, skillIndex) in work.skill" :key="skillIndex">
+              <BaseSkillTag >
+                {{ skill }}
+              </BaseSkillTag>
+            </li>
+          </ul>
+        </dd>
+      </dl>
+
+      <dl class="worksItem">
+        <dt class="worksItem__title">概要</dt>
+        <dd class="worksItem__contents">
+          <p>{{ work.overview }}</p>
         </dd>
       </dl>
       <dl v-if="work.position" class="worksItem">
@@ -57,27 +70,8 @@
             v-text="res"></span>
         </dd>
       </dl>
-      <dl class="worksItem">
-        <dt class="worksItem__title">使用技術</dt>
-        <dd class="worksItem__contents">
-          <span
-            v-for="(skill, skillIndex) in work.skill"
-            :key="skillIndex"
-            v-text="skill"
-          />
-        </dd>
-      </dl>
-      <dl v-if="work.tools" class="worksItem">
-        <dt class="worksItem__title">ツール</dt>
-        <dd class="worksItem__contents">
-          <span
-            v-for="(tool, toolIndex) in work.tools"
-            :key="toolIndex"
-            v-text="tool"
-          />
-        </dd>
-      </dl>
-      <dl class="worksItem">
+
+      <dl v-if="work.points" class="worksItem">
         <dt class="worksItem__title">アピールポイント</dt>
         <dd class="worksItem__contents">{{ work.points }}</dd>
       </dl>
@@ -91,10 +85,13 @@
 
 <script>
 import BaseButton from '../../../components/atoms/BaseButton.vue';
+import BaseSkillTag from '../../../components/atoms/BaseSkillTag.vue';
+
+
 import { client } from '../../../libs/client';
 
 export default {
-  components : {BaseButton},
+  components : {BaseButton,BaseSkillTag},
   async asyncData ({ params,env }) {
 
     try {
@@ -184,7 +181,6 @@ export default {
       }
       span + span {
         &::before {
-          content: '/';
           display: inline-block;
           margin: 0 0.5em;
         }
@@ -193,6 +189,13 @@ export default {
   
     + .worksItem {
       margin-top: 1.5em;
+    }
+
+    .url{
+      text-decoration: underline;
+      &:hover{
+        opacity: 0.6;
+      }
     }
   }
   </style>
