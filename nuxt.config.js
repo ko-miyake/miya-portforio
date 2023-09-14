@@ -1,4 +1,7 @@
 export default {
+  generate: {
+    fallback: true
+  },
   css: ['ress','~/assets/scss/base.scss', '~/assets/scss/global.scss'],
 
   // Target: https://go.nuxtjs.dev/config-target
