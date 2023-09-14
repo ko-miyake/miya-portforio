@@ -67,7 +67,7 @@ export default {
     serviceDomain: process.env.SERVICE_DOMAIN
   },
   env: {
-    apiKey: process.env.API_KEY,
+    apiKey: process.env.GET_API_KEY,
     serviceDomain: process.env.SERVICE_DOMAIN
   },
   mode: process.env.NODE_ENV === 'production' ? 'server' : 'all',
