@@ -22,6 +22,7 @@
     "ress": "^5.0.2",
     "sass": "^1.66.1",
     "sass-loader": "^10.4.1",
+    "timeline-vuejs": "^1.1.7",
     "vue": "^2.7.10",
     "vue-server-renderer": "^2.7.10",
     "vue-template-compiler": "^2.7.10"

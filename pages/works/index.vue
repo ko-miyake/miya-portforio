@@ -59,18 +59,3 @@ export default {
   }
 }
 </script>
- <style lang="scss" scoped>
-.childMainVisual {
-    text-align: center;
-  
-    &__title {
-      font-family: $font-notoSans;
-      font-size: fz(34);
-      margin: 1.6rem 0;
-      background: -webkit-linear-gradient(0deg, #BB42F6, #D385F9 50%, #E3B2FB);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-  }
-
-  </style>

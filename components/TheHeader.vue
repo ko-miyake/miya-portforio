@@ -11,6 +11,7 @@
           <ul class="menu">
             <li>
               <nuxt-link to="/works" class="menu__link">works</nuxt-link>
+              <nuxt-link to="/history" class="menu__link">history</nuxt-link>
             </li>
           </ul>
         </nav>

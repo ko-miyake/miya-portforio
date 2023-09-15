@@ -7,7 +7,7 @@
 <script>
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .skillTag{
     display: inline-flex;
     align-items: center;

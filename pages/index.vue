@@ -10,11 +10,11 @@
               </p>
               <dl class="profile__item">
                 <dt class="profile__title">Skills</dt>
-                <dd>HTML / CSS / JavaScript /JQuery / PHP / Vue </dd>
+                <dd>HTML / CSS / JavaScript /JQuery / PHP / Vue / React / C#</dd>
               </dl>
               <dl class="profile__item">
                 <dt class="profile__title">趣味</dt>
-                <dd>ゲーム、運動、アウトドア、バドミントン</dd>
+                <dd>ゲーム、運動、アウトドア、ものづくり</dd>
               </dl>
             </div>
             <div class="profile__imageArea">
@@ -22,7 +22,11 @@
                 <img src="/images/profile.svg" alt="">
               </div>
             </div>
+  
           </div>
+          <ul class="profile__sns">
+                <li><a href="https://github.com/ko-miyake" target="_blank"><img src="/images/icon/github.svg" alt=""></a></li>
+              </ul>
           <p class="profile__message">
             マークアップエンジニア、フロントエンドエンジニアとして4年間働かせていただいております。<br><br>
             セマンティックなマークアップや、可読性、運用性が高いコーディング・設計を習得しており、工数削減や技術の提案など、積極的に意見しながらプランニングをすることが得意です。 <br><br>
@@ -80,7 +84,7 @@ import BaseButton from '../components/atoms/BaseButton.vue';
 import BaseCard from '../components/atoms/BaseCard.vue';
 import BaseSkillCard from '../components/molecules/BaseSkillCard.vue';
 import BaseSkillTag from '../components/atoms/BaseSkillTag.vue';
-import {client}  from '../libs/client.js'
+import { client }  from '../libs/client.js'
  
 export default {
   components: {
@@ -129,11 +133,21 @@ export default {
   &__upper{
     display: flex;
     flex-flow: column;
-    margin-bottom: 3em;
     justify-content: space-between;
 
     @include mq() {
       flex-flow: nowrap;
+    }
+  }
+
+  &__sns{
+    margin-bottom: 1em;
+    padding: 0 15px;
+    li{
+      list-style: none;
+    }
+    @include mq() {
+      padding: 0;
     }
   }
   &__text {
