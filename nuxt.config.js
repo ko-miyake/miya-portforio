@@ -2,6 +2,7 @@ export default {
   generate: {
     fallback: true
   },
+
   css: ['ress','~/assets/scss/base.scss', '~/assets/scss/global.scss'],
 
   // Target: https://go.nuxtjs.dev/config-target
@@ -22,7 +23,6 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' }],
   },
 
-
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
 
@@ -34,8 +34,12 @@ export default {
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     '@nuxtjs/style-resources', 
-
+    'nuxt-purgecss',
   ],
+
+  purgeCSS: {
+    enabled: true,
+  },
 
   styleResources: {
     scss: ['~/assets/scss/app.scss'],
@@ -46,18 +50,7 @@ export default {
   modules: [
     'nuxt-webfontloader',
     'nuxt-microcms-module', 
-    // '@nuxtjs/google-fonts',
   ],
-  // googleFonts: {
-  //   families: {
-  //     'Noto+Sans+JP': true
-  //   }
-  // },
-  webfontloader: {
-    google: {
-      families: ['Lato:400,700', 'Noto+Sans+JP:400,700'] 
-    },
-  },
   options: {
     serviceDomain: process.env.SERVICE_DOMAIN,
     apiKey: process.env.GET_API_KEY,
@@ -72,7 +65,7 @@ export default {
   },
   mode: process.env.NODE_ENV === 'production' ? 'server' : 'all',
 
-
-  // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    extractCSS: true
+  },
 }

@@ -17,6 +17,7 @@
     "microcms-js-sdk": "^2.5.0",
     "nuxt": "^2.15.8",
     "nuxt-microcms-module": "^3.0.2",
+    "nuxt-purgecss": "^2.0.0",
     "nuxt-webfontloader": "^1.1.0",
     "ress": "^5.0.2",
     "sass": "^1.66.1",
